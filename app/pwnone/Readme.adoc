@@ -6,3 +6,5 @@ The challenge requires multiple commands to be run to make it work:
       
   gcc one.c -fno-stack-protector -no-pie -z execstack -o plzwin
       - Command used for compiling the binary. It is precompiled in this directory
+
+The challenge files given to the user include the binary itself and the c file if it needs to be made easier.
