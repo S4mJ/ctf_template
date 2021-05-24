@@ -1,12 +1,7 @@
-# If you challenge needs to run a host
-# Create a Dockerfile for it
-# Here is just a sample
 FROM python:3-alpine
-WORKDIR /usr/src/app
-EXPOSE 80
-COPY ./app/requirements.txt /usr/src/app
-RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./app/ /usr/src/app
+WORKDIR /usr/src/app/pwnone
+EXPOSE 31337
 
-CMD ["gunicorn", "--workers=4", "--bind=0.0.0.0:80", "app:app"]
+CMD bash -c 'echo 0 > /proc/sys/kernel/randomize_va_space' #Resets on restart unless you configure it in sysctl
+CMD tcpserver -t 50 -RH10 0.0.0.0 31337 ./one
