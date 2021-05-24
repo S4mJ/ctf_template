@@ -1,1 +1,8 @@
+The challenge requires multiple commands to be run to make it work:
 
+  sudo bash -c 'echo 0 > /proc/sys/kernel/randomize_va_space'
+      - Disables ASLR temporarily which is necessary for the challenge.
+      - It is reset when the machine is restarted and can be added to a docker file or in sysctl for a permanent change.
+      
+  gcc one.c -fno-stack-protector -no-pie -z execstack -o plzwin
+      - Command used for compiling the binary. It is precompiled in this directory
